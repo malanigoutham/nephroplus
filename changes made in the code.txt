@@ -1,0 +1,31 @@
+Strict JSON Schema Adherence:
+
+I defined HACKATHON_JSON_SCHEMA_FIELDS to explicitly list the exact JSON keys required by the hackathon (Test_Name, Result, Unit, Reference_Range, Patient_Name, Doctor).
+
+The prompt sent to Ollama in generate_json_with_ollama was significantly refined to explicitly instruct the model to only generate these fields and to use null if a value is not found in the text.
+
+A post-processing step was added after Ollama's response is received, which filters the generated JSON to ensure only the hackathon-specific fields are present, guaranteeing output quality.
+
+Enhanced Layout Awareness:
+
+In extract_text_tesseract, the individual text blocks extracted by Tesseract are now sorted by their vertical position (top) and then horizontal position (left). This is crucial for presenting the text to Ollama in a logical reading order, helping it understand relationships between data points in a structured document.
+
+A heuristic was introduced to add newlines (\n) in the full_text_with_layout that is sent to Ollama. If there's a significant vertical gap between consecutive text blocks, a newline is inserted, providing the LLM with visual layout cues.
+
+More Robust JSON Parsing:
+
+The generate_json_with_ollama function now includes more robust logic to clean Ollama's raw response. It actively strips common markdown code block fences (like json` and  `) that LLMs sometimes include, even when explicitly told not to.
+
+It uses regular expressions (re.search) to more reliably find and extract the JSON object within the LLM's response, making the parsing more resilient to minor formatting deviations from the model.
+
+Improved Debugging and Error Reporting:
+
+Added more detailed print statements throughout the code, especially for preprocessing, OCR, and Ollama interactions, to provide better insights into each step's progress and potential issues.
+
+Error messages are now more specific, and the functions return richer error dictionaries, including ollama_error_details and full_result, to facilitate easier debugging.
+
+An initial check for Ollama connection and model availability was added in the MedicalReportOCR constructor to provide early feedback if the Ollama server isn't running or the model isn't pulled.
+
+Tesseract Confidence Threshold Adjustment:
+
+The confidence threshold for Tesseract extraction in extract_text_tesseract was increased from 30 to 60. This helps filter out more of the low-confidence, potentially noisy OCR results, providing a cleaner input for the Ollama model.
