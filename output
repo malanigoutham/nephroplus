@@ -1,0 +1,14 @@
+{
+  "Test_Name": "Cholesterol, total -Serum",
+  "Result": "168.5",
+  "Unit": "mg/dl",
+  "Reference_Range": "150.0 to 200.0",
+  "Patient_Name": "FREDIN TOM CYRIAC",
+  "Doctor": "Anoop Menon",
+  "_metadata": {
+    "source_image": "WhatsApp Image 2025-06-23 at 7.30.27 PM.jpg",
+    "extraction_method": "tesseract_ollama_deepseek_enhanced",
+    "processing_timestamp": "2025-06-25T<actual_time>",
+    "model_used": "llama3.2:3b"
+  }
+}
