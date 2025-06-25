@@ -1,0 +1,14 @@
+{
+  "Test_Name": "SODIUM Serum",
+  "Result": "141.2",
+  "Unit": "meq/L",
+  "Reference_Range": "135.0 - 155.0",
+  "Patient_Name": "Mr. SAMIR KUMAR SINGH",
+  "Doctor": "DR. ANUP CHANDRA M.B.B.S., MD",
+  "_metadata": {
+    "source_image": "input_image.jpg",
+    "extraction_method": "tesseract_ollama_deepseek_enhanced",
+    "processing_timestamp": "2025-06-25T<actual_time>",
+    "model_used": "llama3.2:3b"
+  }
+}
